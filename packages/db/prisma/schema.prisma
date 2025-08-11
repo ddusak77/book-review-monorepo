@@ -1,0 +1,26 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Book {
+  id       String   @id @default(cuid())
+  title    String
+  author   String
+  reviews  Review[]
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    String
+  content   String
+  createdAt DateTime @default(now())
+  processed Boolean  @default(false)  // to mark if background queue processed the review
+}

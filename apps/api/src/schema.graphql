@@ -1,0 +1,24 @@
+  type Review {
+    id: ID!
+    bookId: ID!
+    content: String!
+  }
+  
+  type Book {
+    id: ID!
+    title: String!
+    author: String!
+    reviews: [Review!]
+  }
+
+  input ReviewInput {
+    content: String!
+  }
+
+  type Query {
+    getBooks: [Book!]!
+  }
+
+  type Mutation {
+    addReview(bookId: ID!, review: ReviewInput!): Review
+  }

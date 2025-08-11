@@ -1,0 +1,19 @@
+# Ignore node_modules in all apps/packages
+**/node_modules
+
+# Ignore local env files
+*.env
+*.env.*
+
+# Ignore Git data
+.git
+.gitignore
+
+# Ignore editor/project files
+.vscode
+.idea
+*.log
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,54 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript build output
+dist/
+build/
+tsconfig.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Prisma
+packages/db/prisma/generated/
+packages/db/node_modules/.prisma/
+
+# Logs
+logs
+*.log
+*.log.*
+pids
+*.pid
+*.seed
+
+# Coverage
+coverage/
+
+# Docker
+docker-compose.override.yml
+.docker/
+tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+
+# GraphQL Codegen
+**/__generated__/
+
+# Ignore lockfiles if not using a specific one per workspace
+# pnpm-lock.yaml
