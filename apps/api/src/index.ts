@@ -4,6 +4,11 @@ import { createSchema, createYoga } from 'graphql-yoga';
 import { createServer } from 'http';
 import path from 'path';
 import { resolvers } from './resolvers';
+import dotenvFlow from 'dotenv-flow';
+
+dotenvFlow.config({
+  path: path.resolve(__dirname, '../../..'),
+});
 
 const typeDefs = loadSchemaSync(path.join(__dirname, './schema.graphql'), {
   loaders: [new GraphQLFileLoader()],

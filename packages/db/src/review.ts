@@ -18,3 +18,13 @@ export async function addReview(
     },
   });
 }
+
+export async function updateReviewText(id: string, appendText: string) {
+  const review = await prisma.review.findUnique({ where: { id } });
+  if (!review) return;
+
+  await prisma.review.update({
+    where: { id },
+    data: { content: review.content + appendText },
+  });
+}

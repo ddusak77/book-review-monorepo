@@ -7,9 +7,5 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["src"],
-  "references": [
-    { "path": "../../packages/db" },
-    { "path": "../../packages/queue" }
-  ]
+  "include": ["src"]
 }

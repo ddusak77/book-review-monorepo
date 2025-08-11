@@ -12,7 +12,8 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@book-review/db": ["packages/db/src"]
+      "@book-review/db": ["packages/db/src"],
+      "@book-review/queue": ["packages/queue/src"]
     }
   }
 }

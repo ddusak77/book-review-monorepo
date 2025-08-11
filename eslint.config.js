@@ -1,8 +1,8 @@
-import eslintPluginPrettier from 'eslint-plugin-prettier';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
+const eslintPluginPrettier = require('eslint-plugin-prettier');
+const tseslint = require('@typescript-eslint/eslint-plugin');
+const tsparser = require('@typescript-eslint/parser');
 
-export default [
+module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
