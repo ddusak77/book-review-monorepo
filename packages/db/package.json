@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --build",
+    "build": "pnpm run prisma:generate && tsc --build",
+    "prisma:generate": "prisma generate",
     "migrate": "prisma migrate dev --name init",
     "seed": "ts-node prisma/seed.ts"
   },
