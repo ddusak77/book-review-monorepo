@@ -7,15 +7,15 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "pnpm -r run build",
     "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
     "dev:api": "pnpm --filter api dev",
+    "dev:worker": "pnpm --filter worker dev",
     "dev:db": "pnpm --filter db dev",
     "dev:db:migrate": "pnpm --filter db run migrate",
-    "dev:db:seed": "pnpm --filter db run seed",
-    "dev:worker": "pnpm --filter worker dev"
+    "dev:db:seed": "pnpm --filter db run seed"
   },
   "devDependencies": {
     "@types/ioredis": "^5.0.0",

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
+    "build":"tsc --build",
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "keywords": [],
