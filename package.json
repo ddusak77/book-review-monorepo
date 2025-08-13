@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev:infra": "docker compose up -d db redis",
-    "dev": "pnpm dev:infra && concurrently -n API,WORKER -c blue,green \"pnpm dev:api\" \"pnpm dev:worker\"",
+    "dev": "pnpm dev:infra && pnpm dev:db:generate && pnpm dev:db:migrate && concurrently -n API,WORKER -c blue,green \"pnpm dev:api\" \"pnpm dev:worker\"",
     "clean": "rimraf packages/*/dist packages/*/tsconfig.tsbuildinfo apps/*/dist apps/*/tsconfig.tsbuildinfo",
     "build": "pnpm run clean && pnpm -r run build --force",
     "test": "vitest",
@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "dev:api": "pnpm --filter api dev",
     "dev:worker": "pnpm --filter worker dev",
-    "dev:db:migrate": "pnpm --filter db run migrate",
+    "dev:db:migrate": "pnpm --filter db run migrate:dev",
+    "dev:db:generate": "pnpm --filter db run generate",
     "dev:db:seed": "pnpm --filter db run seed"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@typescript-eslint/parser": "^8.39.0",
     "@vitest/ui": "^3.2.4",
     "concurrently": "^9.2.0",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",

@@ -19,4 +19,4 @@ RUN pnpm -r run build
 
 RUN cp apps/api/src/schema.graphql apps/api/dist/
 
-CMD ["node", "apps/api/dist/index.js"]
+CMD ["sh", "-c", "pnpm --filter db run migrate:prod && node apps/api/dist/index.js"]

@@ -5,9 +5,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "pnpm run prisma:generate && tsc --build",
-    "prisma:generate": "prisma generate",
-    "migrate": "prisma migrate dev --name init",
+    "build": "pnpm run generate && tsc --build",
+    "generate": "prisma generate",
+    "migrate:dev": "dotenv -e ../../.env -- prisma migrate dev --name init",
+    "migrate:prod": "dotenv -e ../../.env -- prisma migrate deploy",
     "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
