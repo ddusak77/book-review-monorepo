@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "dev": "nodemon --watch src --watch ../../packages --ext ts,tsx --exec tsx src/index.ts",
     "build": "tsc --build"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
-    "@book-review/queue": "workspace:*"
+    "@book-review/queue": "workspace:*",
+    "@book-review/db": "workspace:*"
   }
 }

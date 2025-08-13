@@ -7,35 +7,38 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm -r run build",
+    "dev:infra": "docker compose up -d db redis",
+    "dev": "pnpm dev:infra && concurrently -n API,WORKER -c blue,green \"pnpm dev:api\" \"pnpm dev:worker\"",
+    "clean": "rimraf packages/*/dist packages/*/tsconfig.tsbuildinfo apps/*/dist apps/*/tsconfig.tsbuildinfo",
+    "build": "pnpm run clean && pnpm -r run build --force",
     "test": "vitest",
     "lint": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
     "dev:api": "pnpm --filter api dev",
     "dev:worker": "pnpm --filter worker dev",
-    "dev:db": "pnpm --filter db dev",
     "dev:db:migrate": "pnpm --filter db run migrate",
     "dev:db:seed": "pnpm --filter db run seed"
   },
   "devDependencies": {
-    "@types/ioredis": "^5.0.0",
     "@types/node": "^24.2.1",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
     "@vitest/ui": "^3.2.4",
+    "concurrently": "^9.2.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "bullmq": "^5.56.10",
     "dotenv-flow": "^4.1.0",
-    "ioredis": "^5.7.0"
+    "rimraf": "^5.0.0"
   }
 }

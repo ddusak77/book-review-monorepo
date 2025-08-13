@@ -1,4 +1,4 @@
-import { addReview, getBooks, getReviewsByBookId } from '@book-review/db';
+import { getBooks, getReviewsByBookId } from '@book-review/db';
 import { Resolvers } from './__generated/types/graphql';
 import { addReviewAndQueue } from './reviewService';
 

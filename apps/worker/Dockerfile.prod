@@ -1,0 +1,26 @@
+FROM node:18-alpine
+
+# Enable pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+# Copy manifests
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/api/package.json apps/api/
+COPY apps/worker/package.json apps/worker/
+COPY packages/db/package.json packages/db/
+COPY packages/queue/package.json packages/queue/
+COPY .env.docker .env
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy all source code
+COPY . .
+
+# Build all packages
+RUN pnpm -r run build
+
+# Default command (run worker, change for API if needed)
+CMD ["node", "apps/worker/dist/index.js"]

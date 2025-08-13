@@ -1,0 +1,22 @@
+FROM node:18-alpine
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/api/package.json apps/api/
+COPY apps/worker/package.json apps/worker/
+COPY packages/db/package.json packages/db/
+COPY packages/queue/package.json packages/queue/
+COPY .env.docker .env
+
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+
+RUN pnpm -r run build
+
+RUN cp apps/api/src/schema.graphql apps/api/dist/
+
+CMD ["node", "apps/api/dist/index.js"]

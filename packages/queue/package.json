@@ -10,5 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@types/ioredis": "^5.0.0"
+  },
+  "dependencies": {
+    "bullmq": "^5.56.10",
+    "ioredis": "^5.7.0"
+  }
 }
