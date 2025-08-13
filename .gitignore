@@ -11,8 +11,8 @@ build/
 tsconfig.tsbuildinfo
 
 # Environment files
-.env
-.env.*
+# .env
+# .env.*
 !.env.example
 
 # Prisma
